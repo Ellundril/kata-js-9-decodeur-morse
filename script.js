@@ -27,6 +27,35 @@ const latinToMorse = {
   Z: "--..",
 };
 
+const morseToLatin = {
+  "-": "T",
+  "--": "M",
+  "---": "O",
+  "--.": "G",
+  "--.-": "Q",
+  "--..": "Z",
+  "-.": "N",
+  "-.-": "K",
+  "-.--": "Y",
+  "-.-.": "C",
+  "-..": "D",
+  "-..-": "X",
+  "-...": "B",
+  ".": "E",
+  ".-": "A",
+  ".--": "W",
+  ".---": "J",
+  ".--.": "P",
+  ".-.": "R",
+  ".-..": "L",
+  "..": "I",
+  "..-": "U",
+  "..-.": "F",
+  "...": "S",
+  "...-": "V",
+  "....": "H",
+};
+
 function getLatinCharacterList(texte) {
   return texte.split("");
 }
@@ -38,7 +67,6 @@ function translateLatinCharacter(c) {
 
 function encode(texte) {
   const charATraduire = getLatinCharacterList(texte);
-  console.log(charATraduire);
   const traduction = charATraduire.map((char) => {
     if (char === " ") {
       return " ";
@@ -49,3 +77,26 @@ function encode(texte) {
 
   return traduction.join(" ");
 }
+
+function getMorseCharacterList(morse) {
+  return morse.split(" ");
+}
+
+function translateMorseCharacter(m) {
+  return morseToLatin[m];
+}
+function decode(morse) {
+  const liste = getMorseCharacterList(morse);
+  const traduction = liste.map((m) => {
+    console.log(m);
+    if (m === "/") {
+      return " ";
+    } else {
+      return translateMorseCharacter(m);
+    }
+  });
+  return traduction.join("");
+}
+
+console.log(decode("... --- ... / .- ..- / ... . -.-."));
+console.log(encode("SOS AU SECOURS"));
