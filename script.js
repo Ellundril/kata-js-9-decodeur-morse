@@ -47,5 +47,5 @@ function encode(texte) {
     }
   });
 
-  return traduction;
+  return traduction.join(" ");
 }
