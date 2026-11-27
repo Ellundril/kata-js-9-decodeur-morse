@@ -17,12 +17,10 @@ function translateLatinCharacter(c) {
     case /\p{P}/gu.test(c):
       return c;
     default:
-      return latinToMorse[c.toUpperCase()];
+      const char = c.toUpperCase();
+      return latinToMorse[char];
   }
 }
-
-console.log(translateLatinCharacter(","));
-console.log(translateLatinCharacter("h"));
 
 function encode(texte) {
   const charATraduire = getLatinCharacterList(texte);
@@ -55,3 +53,8 @@ function decode(morse) {
   });
   return traduction.join("");
 }
+
+encodeBtn.addEventListener("click", () => {
+  const texteATraduire = latinInput.value;
+  morseOutput.textContent = encode(texteATraduire);
+});
