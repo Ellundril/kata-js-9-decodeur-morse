@@ -13,9 +13,16 @@ function getLatinCharacterList(texte) {
 }
 
 function translateLatinCharacter(c) {
-  const char = c.toUpperCase();
-  return latinToMorse[char];
+  switch (true) {
+    case /\p{P}/gu.test(c):
+      return c;
+    default:
+      return latinToMorse[c.toUpperCase()];
+  }
 }
+
+console.log(translateLatinCharacter(","));
+console.log(translateLatinCharacter("h"));
 
 function encode(texte) {
   const charATraduire = getLatinCharacterList(texte);
@@ -40,7 +47,6 @@ function translateMorseCharacter(m) {
 function decode(morse) {
   const liste = getMorseCharacterList(morse);
   const traduction = liste.map((m) => {
-    console.log(m);
     if (m === "/") {
       return " ";
     } else {
@@ -49,6 +55,3 @@ function decode(morse) {
   });
   return traduction.join("");
 }
-
-console.log(decode("... --- ... / .- ..- / ... . -.-."));
-console.log(encode("SOS AU SECOURS"));
