@@ -15,7 +15,7 @@ function getLatinCharacterList(texte) {
 function translateLatinCharacter(c) {
   switch (true) {
     case /\p{P}/gu.test(c):
-      return c;
+      return " ";
     default:
       const char = c.toUpperCase();
       return latinToMorse[char];
