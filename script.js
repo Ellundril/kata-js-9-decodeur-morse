@@ -1,3 +1,13 @@
+//elements de la page
+const latinInput = document.querySelector("#latin-input");
+const morseOutput = document.querySelector("#morse-output");
+const encodeBtn = document.querySelector("#encode-btn");
+
+const morseInput = document.querySelector("#morse-input");
+const latinOutput = document.querySelector("#latin-output");
+const decodeBtn = document.querySelector("#decode-btn");
+
+//fonctions
 function getLatinCharacterList(texte) {
   return texte.split("");
 }
