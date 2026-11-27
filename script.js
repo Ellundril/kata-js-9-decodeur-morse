@@ -58,3 +58,8 @@ encodeBtn.addEventListener("click", () => {
   const texteATraduire = latinInput.value;
   morseOutput.textContent = encode(texteATraduire);
 });
+
+decodeBtn.addEventListener("click", () => {
+  const morseAtraduire = morseInput.value;
+  latinOutput.textContent = decode(morseAtraduire);
+});
